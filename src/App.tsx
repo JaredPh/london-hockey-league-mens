@@ -87,6 +87,13 @@ function App() {
 
   return (
     <div className="app">
+      <div className="screen-size-mask">
+        <div className="mask-content">
+          <h2>Screen Too Small</h2>
+          <p>This application requires a minimum screen width of 1800px for optimal viewing.</p>
+          <p>Please use a larger screen or increase your browser window size.</p>
+        </div>
+      </div>
       <aside className="sidebar">
           <div className="filter-group">
             <div className="filter-header">
