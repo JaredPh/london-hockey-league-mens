@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { data, divisions, leagues, divisionGrades, type Divisions } from './data'
+import FilterIcon from './components/FilterIcon'
+import CloseIcon from './components/CloseIcon'
 
 // Get the base path from the environment
 const getAssetPath = (path: string) => {
@@ -17,6 +19,7 @@ function App() {
     const saved = localStorage.getItem('selectedClubs')
     return saved ? JSON.parse(saved) : data.clubs.map(club => club.name)
   })
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     localStorage.setItem('selectedDivisions', JSON.stringify(selectedDivisions))
@@ -108,7 +111,13 @@ function App() {
           <p>Please use a larger screen or increase your browser window size.</p>
         </div>
       </div>
-      <aside className="sidebar">
+      <div className="mobile-banner">
+        <p>This application will look better on a bigger screen (1800px+)</p>
+      </div>
+      <button className="mobile-menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        {sidebarOpen ? <CloseIcon /> : <FilterIcon />}
+      </button>
+      <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
           <div className="filter-group">
             <div className="filter-header">
               <label>Division:</label>

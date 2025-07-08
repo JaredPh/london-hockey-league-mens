@@ -410,9 +410,165 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 1799px) {
+/* Mobile styles */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mobile-menu-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.mobile-banner {
+  display: none;
+}
+
+@media (max-width: 399px) {
   .screen-size-mask {
     display: flex !important;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 1800px) {
+  .screen-size-mask {
+    display: none !important;
+  }
+  
+  .mobile-banner {
+    display: block;
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #856404;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    top: 45px;
+  }
+  
+  .sidebar {
+    padding-top: 95px;
+  }
+  
+  .main-content {
+    margin-top: 85px;
+  }
+  
+  .app {
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100vh;
+    z-index: 999;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 95px;
+  }
+  
+  .sidebar-open {
+    left: 0;
+  }
+  
+  .main-content {
+    margin-top: 85px;
+    padding: 10px;
+  }
+  
+  .main-clubs-section {
+    padding: 10px;
+  }
+  
+  .clubs-grid {
+    overflow-x: auto;
+  }
+  
+  .grid-header {
+    min-width: 600px;
+  }
+  
+  .grid-row {
+    min-width: 600px;
+  }
+  
+  .grid-row .grid-cell:not(:first-child) {
+    border-bottom: 1px solid #999;
+  }
+  
+  .grid-cell:first-child {
+    flex: 0 0 200px;
+  }
+  
+  .club-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .club-logo-placeholder {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .club-name {
+    font-size: 0.8rem;
+  }
+  
+  .team-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  
+  .team-item {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+    flex: none;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-item {
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .team-item {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1801px) {
+  .screen-size-mask {
+    display: none !important;
   }
 }
 
