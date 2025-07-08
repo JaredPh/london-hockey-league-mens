@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { data, divisions, leagues, divisionGrades, type Divisions } from './data'
 
@@ -9,8 +9,22 @@ const getAssetPath = (path: string) => {
 }
 
 function App() {
-  const [selectedDivisions, setSelectedDivisions] = useState<Divisions[]>(divisions)
-  const [selectedClubs, setSelectedClubs] = useState<string[]>(data.clubs.map(club => club.name))
+  const [selectedDivisions, setSelectedDivisions] = useState<Divisions[]>(() => {
+    const saved = localStorage.getItem('selectedDivisions')
+    return saved ? JSON.parse(saved) : divisions
+  })
+  const [selectedClubs, setSelectedClubs] = useState<string[]>(() => {
+    const saved = localStorage.getItem('selectedClubs')
+    return saved ? JSON.parse(saved) : data.clubs.map(club => club.name)
+  })
+
+  useEffect(() => {
+    localStorage.setItem('selectedDivisions', JSON.stringify(selectedDivisions))
+  }, [selectedDivisions])
+
+  useEffect(() => {
+    localStorage.setItem('selectedClubs', JSON.stringify(selectedClubs))
+  }, [selectedClubs])
 
   const handleDivisionChange = (division: Divisions) => {
     setSelectedDivisions(prev =>
