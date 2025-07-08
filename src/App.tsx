@@ -2,6 +2,12 @@ import { useState } from 'react'
 import './App.css'
 import { data, divisions, leagues, divisionGrades, type Divisions } from './data'
 
+// Get the base path from the environment
+const getAssetPath = (path: string) => {
+  const basePath = import.meta.env.BASE_URL || '/'
+  return basePath + path.replace(/^\//, '')
+}
+
 function App() {
   const [selectedDivisions, setSelectedDivisions] = useState<Divisions[]>(divisions)
   const [selectedClubs, setSelectedClubs] = useState<string[]>(data.clubs.map(club => club.name))
@@ -197,7 +203,7 @@ function App() {
                   <div className="grid-cell club-name-cell">
                     {club.logo ? (
                       <img 
-                        src={club.logo} 
+                        src={getAssetPath(club.logo)} 
                         alt={`${club.name} logo`} 
                         className="club-logo"
                       />
