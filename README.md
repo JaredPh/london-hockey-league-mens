@@ -22,7 +22,7 @@ This project is configured to automatically deploy to GitHub Pages when changes 
 The deployment workflow:
 1. Builds the React application
 2. Uploads the built files to GitHub Pages
-3. The site will be available at: `https://[username].github.io/london-hockey-mens-league/`
+3. The site will be available at: `https://[username].github.io/london-hockey-league-mens/`
 
 ## GitHub Pages Setup
 
