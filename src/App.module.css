@@ -1,0 +1,62 @@
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mainContent {
+  flex: 1;
+  background-color: #fafafa;
+  overflow-y: auto;
+}
+
+.mainClubsSection {
+  padding: 20px;
+}
+
+.mainClubsSection h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.mobileMenuToggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mobileMenuToggle:hover {
+  background-color: #f0f0f0;
+}
+
+@media (min-width: 400px) and (max-width: 1800px) {
+  .mobileMenuToggle {
+    display: block;
+    top: 45px;
+  }
+  
+  .app {
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .mainContent {
+    margin-top: 85px;
+    padding: 10px;
+  }
+  
+  .mainClubsSection {
+    padding: 10px;
+  }
+}

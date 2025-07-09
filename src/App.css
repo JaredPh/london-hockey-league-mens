@@ -14,79 +14,7 @@
   padding: 20px;
 }
 
-.filter-section h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #333;
-  font-size: 1.3rem;
-}
 
-.filter-group {
-  margin-bottom: 15px;
-}
-
-.filter-group:last-child {
-  margin-bottom: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.filter-controls {
-  display: flex;
-  gap: 6px;
-}
-
-.control-button {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 3px;
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: #495057;
-}
-
-.control-button:hover {
-  background-color: #e9ecef;
-  border-color: #adb5bd;
-}
-
-.control-button:active {
-  background-color: #dee2e6;
-  transform: translateY(1px);
-}
-
-.filter-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
-  color: #555;
-  font-size: 0.9rem;
-}
-
-.checkbox-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.division-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-}
 
 .division-group {
   display: flex;
@@ -270,20 +198,7 @@
   font-weight: 500;
 }
 
-.team-division {
-  font-size: 0.7rem;
-  opacity: 0.8;
-}
 
-.team-info {
-  background-color: #e3f2fd;
-  border: 1px solid #4a90e2;
-  border-radius: 4px;
-  padding: 4px 6px;
-  font-size: 0.8rem;
-  color: #1976d2;
-  white-space: nowrap;
-}
 
 .group-all {
   font-weight: 600;
@@ -430,7 +345,7 @@
   background-color: #f0f0f0;
 }
 
-.mobile-banner {
+.screen-size-banner {
   display: none;
 }
 
@@ -445,7 +360,7 @@
     display: none !important;
   }
   
-  .mobile-banner {
+  .screen-size-banner {
     display: block;
     background-color: #fff3cd;
     border: 1px solid #ffeaa7;
