@@ -39,9 +39,9 @@ const ClubsGrid = ({ filteredClubs, getAssetPath }: ClubsGridProps) => {
         <div key={index} className="grid-row">
           <div className="grid-cell club-name-cell">
             {club.logo ? (
-              <img 
-                src={getAssetPath(club.logo)} 
-                alt={`${club.name} logo`} 
+              <img
+                src={getAssetPath(club.logo)}
+                alt={`${club.name} logo`}
                 className="club-logo"
               />
             ) : (
@@ -54,13 +54,13 @@ const ClubsGrid = ({ filteredClubs, getAssetPath }: ClubsGridProps) => {
             if (b === 'P') return 1;
             return a.localeCompare(b, undefined, { numeric: true });
           }).map(league => {
-            const teamsInLeague = club.teams.filter(team => 
+            const teamsInLeague = club.teams.filter(team =>
               divisionGrades[team.division].league === league
             );
             return (
               <div key={league} className="grid-cell team-cell">
                 {teamsInLeague.map((team, teamIndex) => (
-                  <div key={teamIndex} className="team-item">
+                  <div key={teamIndex} className={`team-item div-${team.division}`}>
                     <span className="team-name">{team.name}</span>
                   </div>
                 ))}

@@ -163,6 +163,67 @@
   color: #0c5460;
 }
 
+/* Division color classes to match team cards */
+/* Red divisions - gray when deselected, red when selected */
+.div2N:has(.checkboxInput:checked), .div3N:has(.checkboxInput:checked), 
+.div4NW:has(.checkboxInput:checked), .div5NW:has(.checkboxInput:checked), .div6NW:has(.checkboxInput:checked) {
+  background-color: #fed7d7 !important;
+  border-color: #fc8181 !important;
+}
+
+.div2N:has(.checkboxInput:checked) .checkboxLabel, .div3N:has(.checkboxInput:checked) .checkboxLabel, 
+.div4NW:has(.checkboxInput:checked) .checkboxLabel, .div5NW:has(.checkboxInput:checked) .checkboxLabel, 
+.div6NW:has(.checkboxInput:checked) .checkboxLabel {
+  color: #c53030 !important;
+}
+
+/* Blue divisions - gray when deselected, blue when selected */
+.div2S:has(.checkboxInput:checked), .div3S:has(.checkboxInput:checked),
+.div4SW:has(.checkboxInput:checked), .div5SW:has(.checkboxInput:checked), .div6SW:has(.checkboxInput:checked) {
+  background-color: #e3f2fd !important;
+  border-color: #4a90e2 !important;
+}
+
+.div2S:has(.checkboxInput:checked) .checkboxLabel, .div3S:has(.checkboxInput:checked) .checkboxLabel, 
+.div4SW:has(.checkboxInput:checked) .checkboxLabel, .div5SW:has(.checkboxInput:checked) .checkboxLabel, 
+.div6SW:has(.checkboxInput:checked) .checkboxLabel {
+  color: #1976d2 !important;
+}
+
+/* Green divisions - gray when deselected, green when selected */
+.div4E:has(.checkboxInput:checked), .div5E:has(.checkboxInput:checked), .div6E:has(.checkboxInput:checked) {
+  background-color: #dcfce7 !important;
+  border-color: #4ade80 !important;
+}
+
+.div4E:has(.checkboxInput:checked) .checkboxLabel, .div5E:has(.checkboxInput:checked) .checkboxLabel, 
+.div6E:has(.checkboxInput:checked) .checkboxLabel {
+  color: #15803d !important;
+}
+
+/* Keep group headers (P, 1, 2, 3, 4, 5, 6) gray all the time - override individual division colors */
+.groupAll.divP, .groupAll.div1, .groupAll.div2, .groupAll.div3, .groupAll.div4, .groupAll.div5, .groupAll.div6,
+.divP, .div1 {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+}
+
+.groupAll.divP:has(.checkboxInput:checked), .groupAll.div1:has(.checkboxInput:checked), 
+.groupAll.div2:has(.checkboxInput:checked), .groupAll.div3:has(.checkboxInput:checked), 
+.groupAll.div4:has(.checkboxInput:checked), .groupAll.div5:has(.checkboxInput:checked), 
+.groupAll.div6:has(.checkboxInput:checked),
+.divP:has(.checkboxInput:checked), .div1:has(.checkboxInput:checked) {
+  background-color: #e5e7eb !important;
+  border-color: #9ca3af !important;
+}
+
+.groupAll.divP .checkboxLabel, .groupAll.div1 .checkboxLabel, .groupAll.div2 .checkboxLabel, 
+.groupAll.div3 .checkboxLabel, .groupAll.div4 .checkboxLabel, .groupAll.div5 .checkboxLabel, 
+.groupAll.div6 .checkboxLabel,
+.divP .checkboxLabel, .div1 .checkboxLabel {
+  color: #374151 !important;
+}
+
 .clubsFilterList {
   display: flex;
   flex-direction: column;
@@ -171,6 +232,10 @@
   flex: 1;
   overflow-y: auto;
   min-height: 0;
+}
+
+.hiddenClub {
+  display: none !important;
 }
 
 .clubCheckbox {

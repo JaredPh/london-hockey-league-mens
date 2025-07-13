@@ -49,6 +49,14 @@ const Sidebar = ({
             const sortedDivisions = divisions.sort((a, b) => {
               if (a === 'P') return -1;
               if (b === 'P') return 1;
+              
+              // Sort E divisions to the end within each numeric group
+              const aEndsWithE = a.endsWith('E');
+              const bEndsWithE = b.endsWith('E');
+              
+              if (aEndsWithE && !bEndsWithE) return 1;
+              if (!aEndsWithE && bEndsWithE) return -1;
+              
               return a.localeCompare(b, undefined, { numeric: true });
             });
 
@@ -68,7 +76,7 @@ const Sidebar = ({
               .map(([firstChar, divs]) => (
                 <div key={firstChar} className={styles.divisionGroup}>
                   {firstChar !== 'P' && firstChar !== '1' && (
-                    <label className={`${styles.checkboxItem} ${styles.groupAll}`}>
+                    <label className={`${styles.checkboxItem} ${styles.groupAll} ${styles[`div${firstChar}`] || ''}`}>
                       <input
                         type="checkbox"
                         checked={isGroupSelected(firstChar)}
@@ -81,17 +89,23 @@ const Sidebar = ({
                       <span className={styles.checkboxLabel}>{firstChar}</span>
                     </label>
                   )}
-                  {divs.map(division => (
-                    <label key={division} className={`${styles.checkboxItem} ${styles.subOption}`}>
-                      <input
-                        type="checkbox"
-                        checked={selectedDivisions.includes(division)}
-                        onChange={() => onDivisionChange(division)}
-                        className={styles.checkboxInput}
-                      />
-                      <span className={styles.checkboxLabel}>{division.length > 1 ? division.slice(1) : division}</span>
-                    </label>
-                  ))}
+                  {divs.map(division => {
+                    const divisionClass = `div${division}`
+                    return (
+                      <label 
+                        key={division} 
+                        className={`${styles.checkboxItem} ${styles.subOption} ${styles[divisionClass] || ''}`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedDivisions.includes(division)}
+                          onChange={() => onDivisionChange(division)}
+                          className={styles.checkboxInput}
+                        />
+                        <span className={styles.checkboxLabel}>{division.length > 1 ? division.slice(1) : division}</span>
+                      </label>
+                    )
+                  })}
                 </div>
               ));
           })()}
@@ -110,17 +124,25 @@ const Sidebar = ({
           </div>
         </div>
         <div className={styles.clubsFilterList}>
-          {data.clubs.map((club, index) => (
-            <label key={index} className={`${styles.checkboxItem} ${styles.clubCheckbox}`}>
-              <input
-                type="checkbox"
-                checked={selectedClubs.includes(club.name)}
-                onChange={() => onClubChange(club.name)}
-                className={styles.checkboxInput}
-              />
-              <span className={styles.checkboxLabel}>{club.name}</span>
-            </label>
-          ))}
+          {data.clubs.map((club, index) => {
+            const matchesDivision = selectedDivisions.length === 0 ||
+              club.teams.some(team => selectedDivisions.includes(team.division))
+            
+            return (
+              <label 
+                key={index} 
+                className={`${styles.checkboxItem} ${styles.clubCheckbox} ${!matchesDivision ? styles.hiddenClub : ''}`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedClubs.includes(club.name)}
+                  onChange={() => onClubChange(club.name)}
+                  className={styles.checkboxInput}
+                />
+                <span className={styles.checkboxLabel}>{club.name}</span>
+              </label>
+            )
+          })}
         </div>
       </div>
     </aside>
