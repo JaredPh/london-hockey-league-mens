@@ -1,12 +1,14 @@
-import styles from './ScreenSizeMask.module.css'
-
 const ScreenSizeMask = () => {
   return (
-    <div className={styles.screenSizeMask}>
-      <div className={styles.maskContent}>
-        <h2>Screen Too Small</h2>
-        <p>This application requires a minimum screen width of 400px.</p>
-        <p>Please use a larger screen or increase your browser window size.</p>
+    <div className="screen-size-mask">
+      <div className="mask-content">
+        <h2>Screen Size Not Supported</h2>
+        <p>
+          This application is optimized for larger screens. Please view on a device with a screen width of at least 400px.
+        </p>
+        <p>
+          We recommend using a tablet, laptop, or desktop computer for the best experience.
+        </p>
       </div>
     </div>
   )

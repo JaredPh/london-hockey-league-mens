@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import styles from './App.module.css'
 import { data, divisions, type Divisions } from './data'
 import FilterIcon from './components/FilterIcon'
 import CloseIcon from './components/CloseIcon'
@@ -108,10 +107,10 @@ function App() {
   })
 
   return (
-    <div className={styles.app}>
+    <div className="app">
       <ScreenSizeMask />
       <ScreenSizeBanner />
-      <button className={styles.mobileMenuToggle} onClick={() => setSidebarOpen(!sidebarOpen)}>
+      <button className="mobile-menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
         {sidebarOpen ? <CloseIcon /> : <FilterIcon />}
       </button>
       <Sidebar
@@ -128,8 +127,8 @@ function App() {
         isGroupSelected={isGroupSelected}
         isGroupIndeterminate={isGroupIndeterminate}
       />
-      <main className={styles.mainContent}>
-        <div className={styles.mainClubsSection}>
+      <main className="main-content">
+        <div className="main-clubs-section">
           <ClubsGrid 
             filteredClubs={filteredClubs} 
             getAssetPath={getAssetPath}

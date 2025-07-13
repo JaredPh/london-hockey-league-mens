@@ -18,7 +18,7 @@ const ClubsGrid = ({ filteredClubs, getAssetPath }: ClubsGridProps) => {
   if (filteredClubs.length === 0) {
     return (
       <div className="no-clubs-message">
-        <p>No clubs match the current filter criteria.</p>
+        No clubs match the current filter criteria.
       </div>
     )
   }
@@ -26,7 +26,7 @@ const ClubsGrid = ({ filteredClubs, getAssetPath }: ClubsGridProps) => {
   return (
     <div className="clubs-grid">
       <div className="grid-header">
-        <div className="grid-cell header-cell"></div>
+        <div className="grid-cell header-cell">Club</div>
         {[...new Set(leagues)].sort((a, b) => {
           if (a === 'P') return -1;
           if (b === 'P') return 1;
@@ -59,11 +59,13 @@ const ClubsGrid = ({ filteredClubs, getAssetPath }: ClubsGridProps) => {
             );
             return (
               <div key={league} className="grid-cell team-cell">
-                {teamsInLeague.map((team, teamIndex) => (
-                  <div key={teamIndex} className={`team-item div-${team.division}`}>
-                    <span className="team-name">{team.name}</span>
-                  </div>
-                ))}
+                {teamsInLeague.map((team, teamIndex) => {
+                  return (
+                    <div key={teamIndex} className={`team-item div-${team.division}`}>
+                      <span className="team-name">{team.name}</span>
+                    </div>
+                  )
+                })}
               </div>
             );
           })}

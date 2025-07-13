@@ -1,9 +1,31 @@
+/* Base styles from index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* App layout */
 .app {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
+/* Sidebar styles */
 .sidebar {
   width: 360px;
   background-color: #fff;
@@ -14,7 +36,65 @@
   padding: 20px;
 }
 
+.filter-group {
+  margin-bottom: 15px;
+}
 
+.filter-group:last-child {
+  margin-bottom: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.control-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.control-button:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.control-button:active {
+  background-color: #dee2e6;
+  transform: translateY(1px);
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.division-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
 
 .division-group {
   display: flex;
@@ -60,7 +140,153 @@
   font-weight: 500;
 }
 
+.group-all {
+  font-weight: 600;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  margin-right: 8px;
+}
 
+.group-all:hover {
+  background-color: #e9ecef;
+}
+
+.group-all:has(.checkbox-input:checked) {
+  background-color: #d1ecf1;
+  border-color: #4a90e2;
+}
+
+.group-all .checkbox-label {
+  color: #495057;
+  font-size: 0.8rem;
+}
+
+.group-all:has(.checkbox-input:checked) .checkbox-label {
+  color: #0c5460;
+}
+
+.sub-option {
+  font-weight: 600;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.sub-option:hover {
+  background-color: #e9ecef;
+}
+
+.sub-option:has(.checkbox-input:checked) {
+  background-color: #d1ecf1;
+  border-color: #4a90e2;
+}
+
+.sub-option .checkbox-label {
+  color: #495057;
+  font-size: 0.8rem;
+}
+
+.sub-option:has(.checkbox-input:checked) .checkbox-label {
+  color: #0c5460;
+}
+
+/* Division color classes */
+.div2N:has(.checkbox-input:checked), .div3N:has(.checkbox-input:checked), 
+.div4NW:has(.checkbox-input:checked), .div5NW:has(.checkbox-input:checked), .div6NW:has(.checkbox-input:checked) {
+  background-color: #fed7d7 !important;
+  border-color: #fc8181 !important;
+}
+
+.div2N:has(.checkbox-input:checked) .checkbox-label, .div3N:has(.checkbox-input:checked) .checkbox-label, 
+.div4NW:has(.checkbox-input:checked) .checkbox-label, .div5NW:has(.checkbox-input:checked) .checkbox-label, 
+.div6NW:has(.checkbox-input:checked) .checkbox-label {
+  color: #c53030 !important;
+}
+
+.div2S:has(.checkbox-input:checked), .div3S:has(.checkbox-input:checked),
+.div4SW:has(.checkbox-input:checked), .div5SW:has(.checkbox-input:checked), .div6SW:has(.checkbox-input:checked) {
+  background-color: #e3f2fd !important;
+  border-color: #4a90e2 !important;
+}
+
+.div2S:has(.checkbox-input:checked) .checkbox-label, .div3S:has(.checkbox-input:checked) .checkbox-label, 
+.div4SW:has(.checkbox-input:checked) .checkbox-label, .div5SW:has(.checkbox-input:checked) .checkbox-label, 
+.div6SW:has(.checkbox-input:checked) .checkbox-label {
+  color: #1976d2 !important;
+}
+
+.div4E:has(.checkbox-input:checked), .div5E:has(.checkbox-input:checked), .div6E:has(.checkbox-input:checked) {
+  background-color: #dcfce7 !important;
+  border-color: #4ade80 !important;
+}
+
+.div4E:has(.checkbox-input:checked) .checkbox-label, .div5E:has(.checkbox-input:checked) .checkbox-label, 
+.div6E:has(.checkbox-input:checked) .checkbox-label {
+  color: #15803d !important;
+}
+
+.group-all.divP, .group-all.div1, .group-all.div2, .group-all.div3, .group-all.div4, .group-all.div5, .group-all.div6,
+.divP, .div1 {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+}
+
+.group-all.divP:has(.checkbox-input:checked), .group-all.div1:has(.checkbox-input:checked), 
+.group-all.div2:has(.checkbox-input:checked), .group-all.div3:has(.checkbox-input:checked), 
+.group-all.div4:has(.checkbox-input:checked), .group-all.div5:has(.checkbox-input:checked), 
+.group-all.div6:has(.checkbox-input:checked),
+.divP:has(.checkbox-input:checked), .div1:has(.checkbox-input:checked) {
+  background-color: #e5e7eb !important;
+  border-color: #9ca3af !important;
+}
+
+.group-all.divP .checkbox-label, .group-all.div1 .checkbox-label, .group-all.div2 .checkbox-label, 
+.group-all.div3 .checkbox-label, .group-all.div4 .checkbox-label, .group-all.div5 .checkbox-label, 
+.group-all.div6 .checkbox-label,
+.divP .checkbox-label, .div1 .checkbox-label {
+  color: #374151 !important;
+}
+
+.clubs-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.hidden-club {
+  display: none !important;
+}
+
+.club-checkbox {
+  min-width: auto;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.club-checkbox:hover {
+  background-color: #f0f0f0;
+}
+
+.club-checkbox:has(.checkbox-input:checked) {
+  background-color: transparent;
+  border: none;
+}
+
+.club-checkbox .checkbox-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Main content */
 .main-content {
   flex: 1;
   background-color: #fafafa;
@@ -69,6 +295,13 @@
 
 .main-clubs-section {
   padding: 20px;
+}
+
+.main-clubs-section h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
 }
 
 .no-clubs-message {
@@ -81,13 +314,7 @@
   text-align: center;
 }
 
-.main-clubs-section h1 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 2rem;
-}
-
+/* Clubs grid */
 .clubs-grid {
   display: flex;
   flex-direction: column;
@@ -216,93 +443,7 @@
   font-weight: 500;
 }
 
-
-
-.group-all {
-  font-weight: 600;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  margin-right: 8px;
-}
-
-.group-all:hover {
-  background-color: #e9ecef;
-}
-
-.group-all:has(.checkbox-input:checked) {
-  background-color: #d1ecf1;
-  border-color: #4a90e2;
-}
-
-.group-all .checkbox-label {
-  color: #495057;
-  font-size: 0.8rem;
-}
-
-.group-all:has(.checkbox-input:checked) .checkbox-label {
-  color: #0c5460;
-}
-
-.sub-option {
-  font-weight: 600;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-}
-
-.sub-option:hover {
-  background-color: #e9ecef;
-}
-
-.sub-option:has(.checkbox-input:checked) {
-  background-color: #d1ecf1;
-  border-color: #4a90e2;
-}
-
-.sub-option .checkbox-label {
-  color: #495057;
-  font-size: 0.8rem;
-}
-
-.sub-option:has(.checkbox-input:checked) .checkbox-label {
-  color: #0c5460;
-}
-
-.clubs-filter-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-.club-checkbox {
-  min-width: auto;
-  padding: 2px 6px;
-  font-size: 0.8rem;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-}
-
-.club-checkbox:hover {
-  background-color: #f0f0f0;
-}
-
-.club-checkbox:has(.checkbox-input:checked) {
-  background-color: transparent;
-  border: none;
-}
-
-.club-checkbox .checkbox-label {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
+/* Screen size components */
 .screen-size-mask {
   position: fixed;
   top: 0;
@@ -343,7 +484,11 @@
   margin-bottom: 0;
 }
 
-/* Mobile styles */
+.screen-size-banner {
+  display: none;
+}
+
+/* Mobile menu toggle */
 .mobile-menu-toggle {
   display: none;
   position: fixed;
@@ -363,10 +508,7 @@
   background-color: #f0f0f0;
 }
 
-.screen-size-banner {
-  display: none;
-}
-
+/* Media queries */
 @media (max-width: 399px) {
   .screen-size-mask {
     display: flex !important;
@@ -400,18 +542,6 @@
   
   .sidebar {
     padding-top: 95px;
-  }
-  
-  .main-content {
-    margin-top: 85px;
-  }
-  
-  .app {
-    flex-direction: column;
-    position: relative;
-  }
-  
-  .sidebar {
     position: fixed;
     top: 0;
     left: -100%;
@@ -420,7 +550,6 @@
     z-index: 999;
     transition: left 0.3s ease;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    padding-top: 95px;
   }
   
   .sidebar-open {
@@ -430,6 +559,11 @@
   .main-content {
     margin-top: 85px;
     padding: 10px;
+  }
+  
+  .app {
+    flex-direction: column;
+    position: relative;
   }
   
   .main-clubs-section {
@@ -504,4 +638,3 @@
     display: none !important;
   }
 }
-

@@ -1,5 +1,4 @@
 import { data, divisions, type Divisions } from '../data'
-import styles from './Sidebar.module.css'
 
 interface SidebarProps {
   sidebarOpen: boolean
@@ -31,20 +30,20 @@ const Sidebar = ({
   isGroupIndeterminate
 }: SidebarProps) => {
   return (
-    <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
-      <div className={styles.filterGroup}>
-        <div className={styles.filterHeader}>
+    <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
+      <div className="filter-group">
+        <div className="filter-header">
           <label>Division:</label>
-          <div className={styles.filterControls}>
-            <button type="button" onClick={onSelectAllDivisions} className={styles.controlButton}>
+          <div className="filter-controls">
+            <button type="button" onClick={onSelectAllDivisions} className="control-button">
               All
             </button>
-            <button type="button" onClick={onSelectNoneDivisions} className={styles.controlButton}>
+            <button type="button" onClick={onSelectNoneDivisions} className="control-button">
               None
             </button>
           </div>
         </div>
-        <div className={styles.divisionList}>
+        <div className="division-list">
           {(() => {
             const sortedDivisions = divisions.sort((a, b) => {
               if (a === 'P') return -1;
@@ -74,9 +73,9 @@ const Sidebar = ({
                 return a.localeCompare(b, undefined, { numeric: true });
               })
               .map(([firstChar, divs]) => (
-                <div key={firstChar} className={styles.divisionGroup}>
+                <div key={firstChar} className="division-group">
                   {firstChar !== 'P' && firstChar !== '1' && (
-                    <label className={`${styles.checkboxItem} ${styles.groupAll} ${styles[`div${firstChar}`] || ''}`}>
+                    <label className={`checkbox-item group-all div${firstChar}`}>
                       <input
                         type="checkbox"
                         checked={isGroupSelected(firstChar)}
@@ -84,9 +83,9 @@ const Sidebar = ({
                           if (el) el.indeterminate = isGroupIndeterminate(firstChar)
                         }}
                         onChange={() => onGroupChange(firstChar)}
-                        className={styles.checkboxInput}
+                        className="checkbox-input"
                       />
-                      <span className={styles.checkboxLabel}>{firstChar}</span>
+                      <span className="checkbox-label">{firstChar}</span>
                     </label>
                   )}
                   {divs.map(division => {
@@ -94,15 +93,15 @@ const Sidebar = ({
                     return (
                       <label 
                         key={division} 
-                        className={`${styles.checkboxItem} ${styles.subOption} ${styles[divisionClass] || ''}`}
+                        className={`checkbox-item sub-option ${divisionClass}`}
                       >
                         <input
                           type="checkbox"
                           checked={selectedDivisions.includes(division)}
                           onChange={() => onDivisionChange(division)}
-                          className={styles.checkboxInput}
+                          className="checkbox-input"
                         />
-                        <span className={styles.checkboxLabel}>{division.length > 1 ? division.slice(1) : division}</span>
+                        <span className="checkbox-label">{division.length > 1 ? division.slice(1) : division}</span>
                       </label>
                     )
                   })}
@@ -111,19 +110,19 @@ const Sidebar = ({
           })()}
         </div>
       </div>
-      <div className={styles.filterGroup}>
-        <div className={styles.filterHeader}>
+      <div className="filter-group">
+        <div className="filter-header">
           <label>Clubs:</label>
-          <div className={styles.filterControls}>
-            <button type="button" onClick={onSelectAllClubs} className={styles.controlButton}>
+          <div className="filter-controls">
+            <button type="button" onClick={onSelectAllClubs} className="control-button">
               All
             </button>
-            <button type="button" onClick={onSelectNoneClubs} className={styles.controlButton}>
+            <button type="button" onClick={onSelectNoneClubs} className="control-button">
               None
             </button>
           </div>
         </div>
-        <div className={styles.clubsFilterList}>
+        <div className="clubs-filter-list">
           {data.clubs.map((club, index) => {
             const matchesDivision = selectedDivisions.length === 0 ||
               club.teams.some(team => selectedDivisions.includes(team.division))
@@ -131,15 +130,15 @@ const Sidebar = ({
             return (
               <label 
                 key={index} 
-                className={`${styles.checkboxItem} ${styles.clubCheckbox} ${!matchesDivision ? styles.hiddenClub : ''}`}
+                className={`checkbox-item club-checkbox ${!matchesDivision ? 'hidden-club' : ''}`}
               >
                 <input
                   type="checkbox"
                   checked={selectedClubs.includes(club.name)}
                   onChange={() => onClubChange(club.name)}
-                  className={styles.checkboxInput}
+                  className="checkbox-input"
                 />
-                <span className={styles.checkboxLabel}>{club.name}</span>
+                <span className="checkbox-label">{club.name}</span>
               </label>
             )
           })}
